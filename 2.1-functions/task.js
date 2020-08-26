@@ -13,7 +13,7 @@ function getSolutions( a, b, c ) {
         return result = {D: D, roots: [x1, x2]};
     }
   }
-
+  getSolutions( a, b, c );
 function showSolutionsMessage( a, b, c ) {
    console.log('Вычисляем корни квадратного уравнения ' + a + 'x²' + ' + ' + b + 'x' + ' + ' + c + '\n' +'Значение дискриминанта: ' + result.D);
   if  (result.D < 0) {
@@ -26,7 +26,7 @@ function showSolutionsMessage( a, b, c ) {
 }
 
 
-let data = {
+const data = {
   algebra: [2, 4, 5, 2, 3, 4],
   geometry: [2, 4, 5], 
   russian: [3, 3, 4, 5],
@@ -38,31 +38,20 @@ let data = {
   french: [4, 4]
   }
   
-  function getAverageScore(data) {
-  let count = 0;
-  for (let key in data) {
-      count++
-  }
+function getAverageScore(data) {
+  
   let averageMark = 0;
+
   if (marks === []) {
     averageMark = 0
   } else {
-  averageMark = (getAverageMark(data.algebra) + getAverageMark(data.geometry) + getAverageMark(data.russian) + getAverageMark(data.physics) + getAverageMark(data.music) + getAverageMark(data.english) + getAverageMark(data.poetry) + getAverageMark(data.chemistry) + getAverageMark(data.french)) / count
+      for (let key in data) {  
+        data[key] =  getAverageMark(data[key])    
   }
-  return {
-    algebra: getAverageMark(data.algebra), 
-    geometry: getAverageMark(data.geometry),   
-    russian: getAverageMark(data.russian), 
-    physics: getAverageMark(data.physics), 
-    music: getAverageMark(data.music), 
-    english: getAverageMark(data.english), 
-    poetry: getAverageMark(data.poetry), 
-    chemistry: getAverageMark(data.chemistry), 
-    french: getAverageMark(data.french),
-    average: averageMark
-    };
+  data.average = (getAverageMark(Object.values(data)));
   }
-  
+}
+
    let marks = [2, 4, 5];
    function getAverageMark(marks) {
     let sum = 0; 
@@ -71,6 +60,18 @@ let data = {
     }
     return sum / marks.length;
    }
+
+getAverageScore({
+  algebra: [2, 4, 5, 2, 3, 4],
+  geometry: [2, 4, 5], 
+  russian: [3, 3, 4, 5],
+  physics: [5, 5],
+  music: [2, 2, 6],
+  english: [4, 4, 3],
+  poetry: [5, 3, 4],
+  chemistry: [2],
+  french: [4, 4]
+  })
 
 
 
