@@ -101,7 +101,7 @@ giveBookByName(bookName) {
     for (let key in this.books[i]) {
       
       if (this.books[i][key]  == bookName) {
-        let removed = this.books.splice(i, 1)
+        let removed = this.books.splice(i, 1)[0]
         return removed
       }  
     } 
